@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{article.title}}</h1>
+    <small>Written By {{article.author}}</small>
+    <hr>
+    <p>{{article.body}}</p>
+</div>
+{% endblock %}

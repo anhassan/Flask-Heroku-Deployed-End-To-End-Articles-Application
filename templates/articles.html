@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if articles %}
+  <div class="container">        
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Article Id</th>
+            <th>Title</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for article in articles %}
+              <tr>
+                  <td>{{article.id}}</td>
+                  <td><a href="/article/{{article.id}}" style="text-decoration: none; color : black;">{{article.title}}</a></td>
+                  <td>{{article.author}}</td>
+              </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+    </div>
+{% endif %}
+
+{% if error %}
+<div class="alert alert-danger" style="text-align: center;" role="alert">
+    {{error}}
+  </div>
+{% endif %}
+
+{% endblock %}

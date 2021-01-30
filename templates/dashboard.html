@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-success" style="text-align: center;" role="alert">
+            {{msg}}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="container">
+   <div class="jumbotron text-center">
+        <p>Greetings <small>{{session.username}}</small></p>
+        <a href="/add_article" class="btn btn-success" role="button">Add Article</a>
+   </div>
+</div>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Create Date</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <td>{{article.id}}</td>
+            <td>{{article.title}}</td>
+            <td>{{article.author}}</td>
+            <td>{{article.date}}</td>
+            <td><button type="button" class="btn btn-warning"><a href="/edit_article/{{article.id}}" style="text-decoration: none; color : white;">Edit</a></button></td>
+            <td><button type="button" class="btn btn-danger"><a href="/delete_article/{{article.id}}" style="text-decoration: none; color : white;" >Delete</a></button></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if error %}
+<div class="alert alert-danger" style="text-align: center;" role="alert">
+    {{error}}
+  </div>
+{% endif %}
+{% endblock %}

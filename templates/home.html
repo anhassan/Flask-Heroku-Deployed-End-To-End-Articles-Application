@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Articles Application</h1>
+        <p class="lead">An application that compels you to read anything of your choice because the more we read the better we get</p>
+        <hr class="my-4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed cupiditate voluptate omnis aut quod vero earum illo, inventore facilis ullam voluptatibus impedit minus? A autem, asperiores quos quas obcaecati assumenda provident molestias quod eveniet.</p>
+        {% if session.logged_in == NULL %}
+            <a href="/register" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Register</a>
+            <a href="/login" class="btn btn-success btn-lg active" role="button" aria-pressed="true">&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
